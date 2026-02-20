@@ -35,7 +35,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         [SerializeField] private ReefscapeGamePieceIntake coralIntake;
         
         [Header("Game Piece States")]
-        [SerializeField] private GamePieceState coralStowState;
+        [SerializeField] private GamePieceState coralStowState, coralIntakeState;
         
         [Header("Robot Audio")]
         [SerializeField] private AudioSource rollerSource;

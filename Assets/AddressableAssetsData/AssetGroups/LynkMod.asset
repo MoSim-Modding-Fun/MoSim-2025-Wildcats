@@ -14,13 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: LynkMod
   m_GUID: c9a52281ebb6b4c479c8062941657840
-  m_SerializeEntries:
-  - m_GUID: ec637a9556eff6940a2718e1f61306d6
-    m_Address: Assets/Prefabs/Reefscape/Robots/Mods/TestingMod
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - modpack_metadata
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 75be54ec8452b4f43b0aa1a3b6238e73, type: 2}
   m_SchemaSet:
