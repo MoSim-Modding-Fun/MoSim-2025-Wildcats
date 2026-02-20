@@ -170,8 +170,8 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             elevator.SetTarget(_elevatorTargetHeight);
             intakePivot.SetTargetAngle(_intakeTargetAngle).withAxis(JointAxis.X);
             climber.SetTargetAngle(_climberTargetAngle).withAxis(JointAxis.X);
-            climberJointLeft.SetTargetAngle(_climberJointsTargetAngle).withAxis(JointAxis.X);
-            climberJointRight.SetTargetAngle(-_climberJointsTargetAngle).withAxis(JointAxis.X);
+            climberJointLeft.SetTargetAngle(-_climberJointsTargetAngle).withAxis(JointAxis.X);
+            climberJointRight.SetTargetAngle(_climberJointsTargetAngle).withAxis(JointAxis.X);
             algaeDescore.SetTargetAngle(_algaeDescoreTargetAngle).withAxis(JointAxis.X);
 
         }
