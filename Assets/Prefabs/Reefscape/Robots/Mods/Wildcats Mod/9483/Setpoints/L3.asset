@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8a12d115c28e91469126d8a99d437f9, type: 3}
+  m_Script: {fileID: 11500000, guid: e34aa87d631a7c14fb9a4a18dca65211, type: 3}
   m_Name: L3
   m_EditorClassIdentifier: 
-  elevatorHeight: 32
+  elevatorHeight: 39
+  intakeAngle: 0

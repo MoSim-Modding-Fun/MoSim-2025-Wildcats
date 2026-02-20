@@ -6,5 +6,6 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
     public class WildcatsSetpoint : ScriptableObject
     {
         [Tooltip("Inches")] public float elevatorHeight;
+        [Tooltip("Degrees")] public float intakeAngle;
     }
 }
