@@ -120,15 +120,15 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             
             switch (CurrentSetpoint)
             {
-                case ReefscapeSetpoints.Stow: SetSetpoint(stow); break;
+                case ReefscapeSetpoints.Stow: SetSetpoint(stow); SetAlgaeDescoreAngle(0); break;
                 case ReefscapeSetpoints.Intake: SetSetpoint(intake); break;
                 
                 case ReefscapeSetpoints.Processor: SetState(ReefscapeSetpoints.Stow); break;
                 case ReefscapeSetpoints.Stack: SetState(ReefscapeSetpoints.Stow); break;
                 case ReefscapeSetpoints.Barge: SetState(ReefscapeSetpoints.Stow); break;
                 
-                case ReefscapeSetpoints.LowAlgae: SetSetpoint(lowDescore); break;
-                case ReefscapeSetpoints.HighAlgae: SetSetpoint(highDescore); break;
+                case ReefscapeSetpoints.LowAlgae: SetSetpoint(lowDescore); SetAlgaeDescoreAngle(80); break;
+                case ReefscapeSetpoints.HighAlgae: SetSetpoint(highDescore); SetAlgaeDescoreAngle(110); break;
                 
                 case ReefscapeSetpoints.L1: if (_coralController.atTarget) SetSetpoint(l1); break;
                 case ReefscapeSetpoints.L2: if (_coralController.atTarget) SetSetpoint(l2); break;
@@ -139,9 +139,12 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                 case ReefscapeSetpoints.Climbed: SetSetpoint(intake); SetClimberAngle(climb); break;
                 
                 case ReefscapeSetpoints.Place: PlacePiece(); break;
+                
+                case ReefscapeSetpoints.RobotSpecial: SetAlgaeDescoreAngle(0); break;
             }
 
-            if (CurrentSetpoint != ReefscapeSetpoints.Climb && CurrentSetpoint != ReefscapeSetpoints.Climbed)
+            if (CurrentSetpoint != ReefscapeSetpoints.Climb && CurrentSetpoint != ReefscapeSetpoints.Climbed &&
+                LastSetpoint != ReefscapeSetpoints.Climb && LastSetpoint != ReefscapeSetpoints.Climbed)
             {
                 SetClimberAngle(climbStow);
             }
