@@ -23,13 +23,16 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         [SerializeField] private GenericJoint intakePivot, climber, climberJointLeft, climberJointRight, algaeDescore;
         
         [Header("PIDS")]
-        [SerializeField] private PidConstants intakePivotPID, climberPID, climberJointsPID, algaeDescorePID;
+        [SerializeField] private PidConstants intakePivotPID, climberPID, climberJointLeftPID, climberJointRightPID, algaeDescorePID;
+        
+        [Header("Intake Things")]
 
         [Header("Setpoints")]
         [SerializeField] private WildcatsSetpoint stow, intake, l1, l2, l3, l4;
         [SerializeField] private WildcatsSetpoint lowDescore, highDescore;
-        [SerializeField] private float climberStow, climberClimb;
-        [SerializeField] private float climberJointStow, climberJointClimb, climberJointClimbed;
+        
+        [Header("Climb Setpoints")]
+        [SerializeField] private WildcatsClimbSetpoint climbStow, prep, climb;
         
         [Header("Intake Components")]
         [SerializeField] private ReefscapeGamePieceIntake coralIntake;
@@ -50,7 +53,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         
         private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
 
-        private float _elevatorTargetHeight, _intakeTargetAngle, _climberTargetAngle, _climberJointsTargetAngle, _algaeDescoreTargetAngle;
+        private float _elevatorTargetHeight, _intakeTargetAngle, _climberTargetAngle, _climberLeftPincerTarget, _climberRightPincerTarget, _algaeDescoreTargetAngle;
 
         private LayerMask coralMask;
         private bool canClack;
@@ -65,14 +68,15 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             
             intakePivot.SetPid(intakePivotPID);
             climber.SetPid(climberPID);
-            climberJointLeft.SetPid(climberJointsPID);
-            climberJointRight.SetPid(climberJointsPID);
+            climberJointLeft.SetPid(climberJointLeftPID);
+            climberJointRight.SetPid(climberJointRightPID);
             algaeDescore.SetPid(algaeDescorePID);
 
             _elevatorTargetHeight = stow.elevatorHeight;
             _intakeTargetAngle = stow.intakeAngle;
-            _climberTargetAngle = 0;
-            _climberJointsTargetAngle = 0;
+            _climberTargetAngle = climbStow.elevatorAngle;
+            _climberLeftPincerTarget = climbStow.leftPincerAngle;
+            _climberRightPincerTarget = climbStow.rightPincerAngle;
             _algaeDescoreTargetAngle = 0;
             
             RobotGamePieceController.SetPreload(coralStowState);
@@ -102,8 +106,8 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         {
             intakePivot.UpdatePid(intakePivotPID);
             climber.UpdatePid(climberPID);
-            climberJointLeft.UpdatePid(climberJointsPID);
-            climberJointRight.UpdatePid(climberJointsPID);
+            climberJointLeft.UpdatePid(climberJointLeftPID);
+            climberJointRight.UpdatePid(climberJointRightPID);
             algaeDescore.UpdatePid(algaeDescorePID);
         }
 
@@ -131,15 +135,15 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                 case ReefscapeSetpoints.L3: if (_coralController.atTarget) SetSetpoint(l3); break;
                 case ReefscapeSetpoints.L4: if (_coralController.atTarget) SetSetpoint(l4); break;
                 
-                case ReefscapeSetpoints.Climb: SetSetpoint(stow); SetClimberAngle(climberStow, climberJointClimb); break;
-                case ReefscapeSetpoints.Climbed: SetClimberAngle(climberClimb, climberJointClimbed); break;
+                case ReefscapeSetpoints.Climb: SetSetpoint(intake); SetClimberAngle(SuperstructureAtSetpoint(intake) ? prep : climbStow); break;
+                case ReefscapeSetpoints.Climbed: SetSetpoint(intake); SetClimberAngle(climb); break;
                 
                 case ReefscapeSetpoints.Place: PlacePiece(); break;
             }
 
             if (CurrentSetpoint != ReefscapeSetpoints.Climb && CurrentSetpoint != ReefscapeSetpoints.Climbed)
             {
-                SetClimberAngle(climberStow, climberJointStow);
+                SetClimberAngle(climbStow);
             }
             
             UpdateSetpoints();
@@ -154,10 +158,11 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             _intakeTargetAngle = setpoint.intakeAngle;
         }
 
-        private void SetClimberAngle(float climberAngle, float climberJointsAngle)
+        private void SetClimberAngle(WildcatsClimbSetpoint setpoint)
         {
-            _climberTargetAngle = climberAngle;
-            _climberJointsTargetAngle = climberJointsAngle;
+            _climberTargetAngle = setpoint.elevatorAngle;
+            _climberLeftPincerTarget = setpoint.leftPincerAngle;
+            _climberRightPincerTarget = setpoint.rightPincerAngle;
         }
 
         private void SetAlgaeDescoreAngle(float algaeDescoreAngle)
@@ -169,10 +174,10 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         {
             elevator.SetTarget(_elevatorTargetHeight);
             intakePivot.SetTargetAngle(_intakeTargetAngle).withAxis(JointAxis.X);
-            climber.SetTargetAngle(_climberTargetAngle).withAxis(JointAxis.X);
-            climberJointLeft.SetTargetAngle(-_climberJointsTargetAngle).withAxis(JointAxis.X);
-            climberJointRight.SetTargetAngle(_climberJointsTargetAngle).withAxis(JointAxis.X);
-            algaeDescore.SetTargetAngle(_algaeDescoreTargetAngle).withAxis(JointAxis.X);
+            climber.SetTargetAngle(_climberTargetAngle).withAxis(JointAxis.X).noWrap(-90);
+            climberJointLeft.SetTargetAngle(_climberLeftPincerTarget).withAxis(JointAxis.Y).noWrap(90);
+            climberJointRight.SetTargetAngle(_climberRightPincerTarget).withAxis(JointAxis.Y).noWrap(-90);
+            algaeDescore.SetTargetAngle(_algaeDescoreTargetAngle).withAxis(JointAxis.X).useCustomStartingOffset(-30);
 
         }
         

@@ -9,7 +9,7 @@ namespace Games.Reefscape.GameManagement
     {
         protected override float MatchDuration => 150f;
         protected override float TeleopStartTime => 135f;
-        protected override float EndgameStartTime => 20f;
+        protected override float EndgameStartTime => 130f;
         
         protected override void StartTeleopTransition()
         {
