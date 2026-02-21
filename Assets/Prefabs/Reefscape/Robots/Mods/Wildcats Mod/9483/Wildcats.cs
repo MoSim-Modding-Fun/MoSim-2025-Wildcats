@@ -59,8 +59,6 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         private bool canClack;
 
         private bool _atSetpoint = true;
-
-        private bool algeeDescore = false;
         
         #endregion
         
@@ -86,7 +84,8 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
             _coralController.gamePieceStates = new[]
             {
-                coralStowState
+                coralStowState,
+                coralIntakeState
             };
             _coralController.intakes.Add(coralIntake);
             
@@ -117,7 +116,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         {
             bool hasCoral = _coralController.HasPiece();
             
-            _coralController.SetTargetState(coralStowState);
+            _coralController.SetTargetState(coralIntakeState);
             //_coralController.RequestIntake(coralIntake, SuperstructureAtSetpoint(intake) && IntakeAction.IsPressed() && !hasCoral);
             
             switch (CurrentSetpoint)
@@ -125,38 +124,41 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                 case ReefscapeSetpoints.Stow: 
                     SetSetpoint(stow);
 
-                    if (LastSetpoint != ReefscapeSetpoints.LowAlgae && LastSetpoint != ReefscapeSetpoints.HighAlgae && !algeeDescore)
-                    {
-                        SetAlgaeDescoreAngle(0);
-                    }
+                    SetAlgaeDescoreAngle(0);
                     
                     break;
-                case ReefscapeSetpoints.Intake: SetSetpoint(intake); algeeDescore = false; break;
+                case ReefscapeSetpoints.Intake: SetSetpoint(intake); break;
                 
                 case ReefscapeSetpoints.Processor: SetState(ReefscapeSetpoints.Stow); break;
                 case ReefscapeSetpoints.Stack: SetState(ReefscapeSetpoints.Stow); break;
                 case ReefscapeSetpoints.Barge: SetState(ReefscapeSetpoints.Stow); break;
                 
-                case ReefscapeSetpoints.LowAlgae: SetSetpoint(lowDescore); SetAlgaeDescoreAngle(80); SetState(ReefscapeSetpoints.Stow); algeeDescore = true; break;
-                case ReefscapeSetpoints.HighAlgae: SetSetpoint(highDescore); SetAlgaeDescoreAngle(110); SetState(ReefscapeSetpoints.Stow); algeeDescore = true; break;
+                case ReefscapeSetpoints.LowAlgae: SetSetpoint(lowDescore); SetAlgaeDescoreAngle(130); if(IntakeAction.IsPressed()) SetState(ReefscapeSetpoints.Intake); break;
+                case ReefscapeSetpoints.HighAlgae: SetSetpoint(highDescore); SetAlgaeDescoreAngle(110); if(IntakeAction.IsPressed()) SetState(ReefscapeSetpoints.Intake); break;
                 
-                case ReefscapeSetpoints.L1: if (_coralController.atTarget) SetSetpoint(l1); algeeDescore = false; break;
-                case ReefscapeSetpoints.L2: if (_coralController.atTarget) SetSetpoint(l2); algeeDescore = false; break;
-                case ReefscapeSetpoints.L3: if (_coralController.atTarget) SetSetpoint(l3); algeeDescore = false; break;
-                case ReefscapeSetpoints.L4: if (_coralController.atTarget) SetSetpoint(l4); algeeDescore = false; break;
+                case ReefscapeSetpoints.L1: if (_coralController.atTarget) SetSetpoint(l1); break;
+                case ReefscapeSetpoints.L2: if (_coralController.atTarget) SetSetpoint(l2); break;
+                case ReefscapeSetpoints.L3: if (_coralController.atTarget) SetSetpoint(l3); break;
+                case ReefscapeSetpoints.L4: if (_coralController.atTarget) SetSetpoint(l4); break;
                 
-                case ReefscapeSetpoints.Climb: SetSetpoint(intake); SetClimberAngle(SuperstructureAtSetpoint(intake) ? prep : climbStow); algeeDescore = false; break;
-                case ReefscapeSetpoints.Climbed: SetSetpoint(intake); SetClimberAngle(climb); algeeDescore = false; break;
+                case ReefscapeSetpoints.Climb: SetSetpoint(intake); SetClimberAngle(SuperstructureAtSetpoint(intake) ? prep : climbStow); break;
+                case ReefscapeSetpoints.Climbed: SetSetpoint(intake); SetClimberAngle(climb); break;
                 
-                case ReefscapeSetpoints.Place: PlacePiece(); algeeDescore = false; break;
+                case ReefscapeSetpoints.Place: PlacePiece(); break;
                 
-                case ReefscapeSetpoints.RobotSpecial: SetAlgaeDescoreAngle(0); SetState(ReefscapeSetpoints.Stow); algeeDescore = false; break;
+                case ReefscapeSetpoints.RobotSpecial: SetAlgaeDescoreAngle(0); SetState(ReefscapeSetpoints.Stow); break;
             }
 
             if (CurrentSetpoint != ReefscapeSetpoints.Climb && CurrentSetpoint != ReefscapeSetpoints.Climbed &&
                 LastSetpoint != ReefscapeSetpoints.Climb && LastSetpoint != ReefscapeSetpoints.Climbed)
             {
                 SetClimberAngle(climbStow);
+            }
+
+            if (SuperstructureAtSetpoint(intake) && IntakeAction.IsPressed())
+            {
+                _coralController.SetTargetState(coralIntakeState);
+                _coralController.RequestIntake(coralIntake);
             }
             
             UpdateSetpoints();
