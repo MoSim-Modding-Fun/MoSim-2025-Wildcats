@@ -26,6 +26,8 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         [SerializeField] private PidConstants intakePivotPID, climberPID, climberJointLeftPID, climberJointRightPID, algaeDescorePID;
         
         [Header("Intake Things")]
+        [SerializeField] private GenericRoller topRoller, leftRoller, rightRoller;
+        [SerializeField] private Transform leftSensor, rightSensor;
 
         [Header("Setpoints")]
         [SerializeField] private WildcatsSetpoint stow, intake, l1, l2, l3, l4;
@@ -115,9 +117,18 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         private void FixedUpdate()
         {
             bool hasCoral = _coralController.HasPiece();
+
+
+            if (CurrentSetpoint == ReefscapeSetpoints.Intake || (LastSetpoint == ReefscapeSetpoints.Intake && !SuperstructureAtSetpoint(stow)))
+            {
+                _coralController.SetTargetState(coralIntakeState);
+            }
+            else
+            {
+                _coralController.SetTargetState(coralStowState);
+            }
             
-            _coralController.SetTargetState(coralIntakeState);
-            //_coralController.RequestIntake(coralIntake, SuperstructureAtSetpoint(intake) && IntakeAction.IsPressed() && !hasCoral);
+            _coralController.RequestIntake(coralIntake, SuperstructureAtSetpoint(intake) && IntakeAction.IsPressed() && !hasCoral);
             
             switch (CurrentSetpoint)
             {
@@ -157,12 +168,33 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
             if (SuperstructureAtSetpoint(intake) && IntakeAction.IsPressed())
             {
-                _coralController.SetTargetState(coralIntakeState);
                 _coralController.RequestIntake(coralIntake);
             }
             
             UpdateSetpoints();
             UpdateAudio();
+            
+            _coralController.MoveIntake(coralIntake, coralIntakeState.stateTarget);
+            if (!leftRoller.gameObject.activeSelf)
+            {
+                leftRoller.gameObject.SetActive(true);
+                rightRoller.gameObject.SetActive(true);
+            }
+
+            var rayDirection = coralIntakeState.stateTarget.forward;
+            var distance = 0.0254f * 5f;
+            var coralMask = LayerMask.GetMask("Coral");
+            var coralRight = Physics.Raycast(rightSensor.position, rayDirection, distance, coralMask);
+            var coralLeft = Physics.Raycast(leftSensor.position, rayDirection, distance, coralMask);
+
+            if (IntakeAction.IsPressed() && CurrentSetpoint != ReefscapeSetpoints.LowAlgae && CurrentSetpoint != ReefscapeSetpoints.HighAlgae)
+            {
+                if (coralRight && coralLeft)
+                {
+                    leftRoller.ChangeAngularVelocity(8000);
+                    rightRoller.ChangeAngularVelocity(8000);
+                }
+            }
         }
 
         #region Actuators & Setpoints
