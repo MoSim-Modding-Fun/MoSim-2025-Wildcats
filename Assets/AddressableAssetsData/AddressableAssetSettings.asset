@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 9162ef73a8b7ff14a81079bd59987bc0
   m_currentHash:
     serializedVersion: 2
-    Hash: 8a170b440715ed3c4e29d385b26bab6a
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -75,6 +75,8 @@ MonoBehaviour:
       m_Id: 754525373472a7147b0b64a7489fc727
       m_ProfileName: Default
       m_Values:
+      - m_Id: 05ae8f03d2143b344b8793d154e191f3
+        m_Value: '{UnityEngine.Application.dataPath}/../Mods/Wildcats Mod'
       - m_Id: 067e7677776176d459115365ce143ae6
         m_Value: 'http://[PrivateIpAddress]:[HostingServicePort]'
       - m_Id: 09b0b24e528b599428cd44c5db541c03
@@ -83,6 +85,8 @@ MonoBehaviour:
         m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: 3995af1f76783674a86b8f7323c5f71e
         m_Value: '{UnityEngine.Application.persistentDataPath}/Mods/Packed Assets'
+      - m_Id: 41bee50e4c172424c923bad2bdaca908
+        m_Value: '{UnityEngine.Application.persistentDataPath}/Mods/Wildcats Mod'
       - m_Id: 627bab2970104a046864120c8cb6850a
         m_Value: 'ServerData/[BuildTarget]'
       - m_Id: 6ae011911ed4dff4eb609933b6caac2a
@@ -94,6 +98,9 @@ MonoBehaviour:
       - m_Id: dc362afee9112ee489246a2a832e6005
         m_Value: '{UnityEngine.Application.dataPath}/../Mods/MechTechMod'
     m_ProfileEntryNames:
+    - m_Id: 05ae8f03d2143b344b8793d154e191f3
+      m_Name: Wildcats Mod_BuildPath
+      m_InlineUsage: 0
     - m_Id: 067e7677776176d459115365ce143ae6
       m_Name: Remote.LoadPath
       m_InlineUsage: 0
@@ -105,6 +112,9 @@ MonoBehaviour:
       m_InlineUsage: 0
     - m_Id: 3995af1f76783674a86b8f7323c5f71e
       m_Name: Packed Assets_LoadPath
+      m_InlineUsage: 0
+    - m_Id: 41bee50e4c172424c923bad2bdaca908
+      m_Name: Wildcats Mod_LoadPath
       m_InlineUsage: 0
     - m_Id: 627bab2970104a046864120c8cb6850a
       m_Name: Remote.BuildPath
