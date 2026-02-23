@@ -15255,7 +15255,7 @@ MonoBehaviour:
   maxDistance: 2.755906
   accuracy: 0.5334646
   lockXAxis: 0
-  lockYAxis: 1
+  lockYAxis: 0
   lockZAxis: 0
   roationForce: 4.65
   maxRotationSpeed: 32
@@ -18308,14 +18308,14 @@ MonoBehaviour:
   coralStowState:
     name: Stow
     stateNum: 1
-    stateMoveSpeed: 500
+    stateMoveSpeed: 25
     stateTarget: {fileID: 4973423391262329407}
     smoothHandoff: 0
     angularSpeed: 0
   coralIntakeState:
     name: Intake
     stateNum: 2
-    stateMoveSpeed: 500
+    stateMoveSpeed: 50
     stateTarget: {fileID: 1265985974820093518}
     smoothHandoff: 0
     angularSpeed: 0
