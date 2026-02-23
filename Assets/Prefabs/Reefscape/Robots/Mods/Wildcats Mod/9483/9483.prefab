@@ -39010,7 +39010,7 @@ Transform:
   m_GameObject: {fileID: 5579848394810430253}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.8870108, z: -0.46174863, w: 0}
-  m_LocalPosition: {x: -0.1075, y: 0.0018, z: 0.1707}
+  m_LocalPosition: {x: -0.1075, y: 0.008, z: 0.1618}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43914,8 +43914,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.08978789, y: 0.109246954, z: 0.09172451}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.08978789, y: 0.12666188, z: 0.09172451}
+  m_Center: {x: -0.0000000014015151, y: -0.008707464, z: 0.0000000017505175}
 --- !u!1 &6329044751857948476
 GameObject:
   m_ObjectHideFlags: 0
@@ -44799,7 +44799,7 @@ Transform:
   m_GameObject: {fileID: 6486996921298567743}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.8870108, z: -0.46174863, w: 0}
-  m_LocalPosition: {x: 0.1066, y: 0.0015000734, z: 0.17119996}
+  m_LocalPosition: {x: 0.1066, y: 0.0077, z: 0.1623}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -47806,7 +47806,7 @@ Transform:
   m_GameObject: {fileID: 6980002529177636458}
   serializedVersion: 2
   m_LocalRotation: {x: -0.32650566, y: 0.6272117, z: -0.32650566, w: 0.6272109}
-  m_LocalPosition: {x: -0.0044, y: -0.0992, z: 0.2345}
+  m_LocalPosition: {x: -0.0044, y: -0.093, z: 0.2256}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50031,8 +50031,8 @@ Transform:
   m_GameObject: {fileID: 7332395754699376947}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000029802317, y: -0.7372774, z: -0.6755902, w: 0.00000017881389}
-  m_LocalPosition: {x: 0, y: 0.67763406, z: -0.32649186}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 0.6824, z: -0.3269}
+  m_LocalScale: {x: 1, y: 1, z: 1.2077}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2738567854143308478}
@@ -50057,8 +50057,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.32, y: 0.08, z: 0.09172451}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.24004234, y: 0.057312246, z: 0.09172451}
+  m_Center: {x: 0.0010886624, y: -0.0113439, z: 0.0000000020531006}
 --- !u!114 &2373679193649981132
 MonoBehaviour:
   m_ObjectHideFlags: 0
