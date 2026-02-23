@@ -19,39 +19,47 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         #region Serialized Fields and Variables
         
         [Header("Components")]
+        
         [SerializeField] private GenericElevator elevator;
         [SerializeField] private GenericJoint intakePivot, climber, climberJointLeft, climberJointRight, algaeDescore;
         
         [Header("PIDS")]
+        
         [SerializeField] private PidConstants intakePivotPID, climberPID, climberJointLeftPID, climberJointRightPID, algaeDescorePID;
         
         [Header("Intake Things")]
+        
         [SerializeField] private GenericRoller topRoller, leftRoller, rightRoller;
         [SerializeField] private Transform leftSensor, rightSensor;
 
         [Header("Setpoints")]
+        
         [SerializeField] private WildcatsSetpoint stow, intake, l1, l2, l3, l4;
         [SerializeField] private WildcatsSetpoint lowDescore, highDescore;
         
         [Header("Climb Setpoints")]
+        
         [SerializeField] private WildcatsClimbSetpoint climbStow, prep, climb;
         
         [Header("Intake Components")]
+        
         [SerializeField] private ReefscapeGamePieceIntake coralIntake;
         
         [Header("Game Piece States")]
-        [SerializeField] private GamePieceState coralStowState, coralIntakeState;
+        
+        [SerializeField] private GamePieceState coralIntakeState, coralTransferState1, coralTransferState2, coralTransferState3, coralTransferState4, coralStowState;
         
         [Header("Robot Audio")]
+        
         [SerializeField] private AudioSource rollerSource;
         [SerializeField] private AudioClip intakeClip;
         
         [Header("Funnel Close Audio")]
+        
         [SerializeField] private AudioSource funnelCloseSource;
         [SerializeField] private AudioClip funnelCloseAudio;
         [SerializeField] private BoxCollider coralTrigger;
         private OverlapBoxBounds soundDetector;
-        
         
         private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
 
@@ -59,8 +67,8 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
         private LayerMask coralMask;
         private bool canClack;
-
-        private bool _atSetpoint = true;
+        
+        private ReefscapeAutoAlign align;
         
         #endregion
         
@@ -87,9 +95,15 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             _coralController.gamePieceStates = new[]
             {
                 coralStowState,
+                coralTransferState1,
+                coralTransferState2,
+                coralTransferState3,
+                coralTransferState4,
                 coralIntakeState
             };
             _coralController.intakes.Add(coralIntake);
+            
+            align = gameObject.GetComponent<ReefscapeAutoAlign>();
             
             rollerSource.clip = intakeClip;
             rollerSource.loop = true;
@@ -100,8 +114,6 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             funnelCloseSource.Stop();
 
             soundDetector = new OverlapBoxBounds(coralTrigger);
-
-            coralMask = LayerMask.GetMask("Coral");
             canClack = true;
         }
 
@@ -116,47 +128,92 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
         private void FixedUpdate()
         {
+            AutoAlignLogic();
+            
             bool hasCoral = _coralController.HasPiece();
             bool eeHasCoral = _coralController.currentStateNum == coralStowState.stateNum && _coralController.atTarget;
             
             _coralController.RequestIntake(coralIntake, SuperstructureAtSetpoint(intake) && IntakeAction.IsPressed() && !hasCoral);
             
-            if (SuperstructureAtSetpoint(stow) && _coralController.HasPiece()) _coralController.SetTargetState(coralStowState); 
+            if (eeHasCoral)
+            {
+                switch (CurrentSetpoint)
+                {
+                    case ReefscapeSetpoints.L4: 
+                        SetSetpoint(l4); 
+                        break;
+                    
+                    case ReefscapeSetpoints.L3: 
+                        SetSetpoint(l3); 
+                        break;
+                    
+                    case ReefscapeSetpoints.L2: 
+                        SetSetpoint(l2); 
+                        break;
+                    
+                    case ReefscapeSetpoints.L1: 
+                        SetSetpoint(l1); 
+                        break;
+                }
+            }
+            
+            AnimateCoralHandoff();
             
             switch (CurrentSetpoint)
             {
-                case ReefscapeSetpoints.Stow: SetSetpoint(stow); SetAlgaeDescoreAngle(0); break;
-                case ReefscapeSetpoints.Intake:
-                    if (eeHasCoral)
-                    {
-                        _coralController.SetTargetState(coralStowState); 
-                    }
-                    else
-                    {
-                        _coralController.SetTargetState(coralIntakeState);
-                    }
-
-                    SetSetpoint(intake);
-
+                case ReefscapeSetpoints.Stow: 
+                    SetSetpoint(stow); 
+                    SetAlgaeDescoreAngle(0); 
                     break;
-                case ReefscapeSetpoints.Processor: SetState(ReefscapeSetpoints.Stow); break;
-                case ReefscapeSetpoints.Stack: SetState(ReefscapeSetpoints.Stow); break;
-                case ReefscapeSetpoints.Barge: SetState(ReefscapeSetpoints.Stow); break;
                 
-                case ReefscapeSetpoints.LowAlgae: SetSetpoint(lowDescore); SetAlgaeDescoreAngle(130); if(IntakeAction.IsPressed()) SetState(ReefscapeSetpoints.Intake); break;
-                case ReefscapeSetpoints.HighAlgae: SetSetpoint(highDescore); SetAlgaeDescoreAngle(110); if(IntakeAction.IsPressed()) SetState(ReefscapeSetpoints.Intake); break;
+                case ReefscapeSetpoints.Intake:
+                    if (!hasCoral) _coralController.SetTargetState(coralIntakeState);
+                    SetSetpoint(intake);
+                    break;
                 
-                case ReefscapeSetpoints.L1: if (eeHasCoral) SetSetpoint(l1); break;
-                case ReefscapeSetpoints.L2: if (eeHasCoral) SetSetpoint(l2); break;
-                case ReefscapeSetpoints.L3: if (eeHasCoral) SetSetpoint(l3); break;
-                case ReefscapeSetpoints.L4: if (eeHasCoral) SetSetpoint(l4); break;
                 
-                case ReefscapeSetpoints.Climb: SetSetpoint(intake); SetClimberAngle(SuperstructureAtSetpoint(intake) ? prep : climbStow); break;
-                case ReefscapeSetpoints.Climbed: SetSetpoint(intake); SetClimberAngle(climb); break;
+                case ReefscapeSetpoints.LowAlgae: 
+                    SetSetpoint(lowDescore); 
+                    SetAlgaeDescoreAngle(130); 
+                    if(IntakeAction.IsPressed()) SetState(ReefscapeSetpoints.Intake); 
+                    break;
                 
-                case ReefscapeSetpoints.Place: PlacePiece(); break;
+                case ReefscapeSetpoints.HighAlgae: 
+                    SetSetpoint(highDescore);
+                    SetAlgaeDescoreAngle(110); 
+                    if(IntakeAction.IsPressed()) SetState(ReefscapeSetpoints.Intake); 
+                    break;
                 
-                case ReefscapeSetpoints.RobotSpecial: SetAlgaeDescoreAngle(0); SetState(ReefscapeSetpoints.Stow); break;
+                case ReefscapeSetpoints.Climb: 
+                    SetSetpoint(intake); 
+                    SetClimberAngle(SuperstructureAtSetpoint(intake) ? prep : climbStow); 
+                    break;
+                
+                case ReefscapeSetpoints.Climbed: 
+                    SetSetpoint(intake); 
+                    SetClimberAngle(climb); 
+                    break;
+                
+                case ReefscapeSetpoints.Place: 
+                    PlacePiece(); 
+                    break;
+                
+                case ReefscapeSetpoints.RobotSpecial: 
+                    SetAlgaeDescoreAngle(0); 
+                    SetState(ReefscapeSetpoints.Stow); 
+                    break;
+                case ReefscapeSetpoints.Processor: 
+                    SetAlgaeDescoreAngle(0); 
+                    SetState(ReefscapeSetpoints.Stow); 
+                    break;
+                case ReefscapeSetpoints.Stack: 
+                    SetAlgaeDescoreAngle(0); 
+                    SetState(ReefscapeSetpoints.Stow); 
+                    break;
+                case ReefscapeSetpoints.Barge: 
+                    SetAlgaeDescoreAngle(0); 
+                    SetState(ReefscapeSetpoints.Stow); 
+                    break;
             }
 
             if (CurrentSetpoint != ReefscapeSetpoints.Climb && CurrentSetpoint != ReefscapeSetpoints.Climbed &&
@@ -164,14 +221,6 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             {
                 SetClimberAngle(climbStow);
             }
-
-            if (SuperstructureAtSetpoint(intake) && IntakeAction.IsPressed())
-            {
-                _coralController.RequestIntake(coralIntake);
-            }
-            
-            UpdateSetpoints();
-            UpdateAudio();
             
             _coralController.MoveIntake(coralIntake, coralIntakeState.stateTarget);
             if (!leftRoller.gameObject.activeSelf)
@@ -194,6 +243,9 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                     rightRoller.ChangeAngularVelocity(8000);
                 }
             }
+            
+            UpdateSetpoints();
+            UpdateAudio();
         }
 
         #region Actuators & Setpoints
@@ -231,6 +283,11 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         
 
         #region Logic Helpers
+
+        private bool CoralAtState(GamePieceState state)
+        {
+            return _coralController.atTarget && _coralController.currentStateNum == state.stateNum;
+        }
 
         private bool ElevatorAtSetpoint(WildcatsSetpoint targetSetpoint)
         {
@@ -293,9 +350,71 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             }
         }
 
+        private bool IsCoralSetpoint()
+        {
+            return CurrentSetpoint == ReefscapeSetpoints.L4 ||
+                   CurrentSetpoint == ReefscapeSetpoints.L3 ||
+                   CurrentSetpoint == ReefscapeSetpoints.L2 ||
+                   CurrentSetpoint == ReefscapeSetpoints.L1 ||
+                   LastSetpoint == ReefscapeSetpoints.L4 ||
+                   LastSetpoint == ReefscapeSetpoints.L3 ||
+                   LastSetpoint == ReefscapeSetpoints.L2 ||
+                   LastSetpoint == ReefscapeSetpoints.L1;
+        }
+
         private void PlacePiece()
         {
-            _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 4), 0.6f, 1f);
+            if (!IsCoralSetpoint()) return;
+
+            if (LastSetpoint == ReefscapeSetpoints.L4)
+            {
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 4), 0.7f, 0.5f);
+                return;
+            }
+            else if (LastSetpoint == ReefscapeSetpoints.L1)
+            {
+                
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 2), 0.2f, 0.5f);
+                return;
+            }
+            _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 4));
+        }
+
+        private void AnimateCoralHandoff()
+        {
+            if (SuperstructureAtSetpoint(stow) && CoralAtState(coralIntakeState))
+            {
+                _coralController.SetTargetState(coralTransferState1);
+            } 
+            else if (CoralAtState(coralTransferState1))
+            {
+                _coralController.SetTargetState(coralTransferState2);
+            } 
+            else if (CoralAtState(coralTransferState2))
+            {
+                _coralController.SetTargetState(coralTransferState3);
+            } 
+            else if (CoralAtState(coralTransferState3))
+            {
+                _coralController.SetTargetState(coralTransferState4);
+            } 
+            else if (CoralAtState(coralTransferState4))
+            {
+                _coralController.SetTargetState(coralStowState);
+            }
+        }
+
+        private void AutoAlignLogic()
+        {
+            if (CurrentSetpoint == ReefscapeSetpoints.L4 ||
+                LastSetpoint == ReefscapeSetpoints.L4)
+            {
+                align.offset = new Vector3(0, 0, 10.5f);
+            }
+            else
+            {
+                align.offset = new Vector3(0, 0, 7);
+            }
         }
         
         #endregion
