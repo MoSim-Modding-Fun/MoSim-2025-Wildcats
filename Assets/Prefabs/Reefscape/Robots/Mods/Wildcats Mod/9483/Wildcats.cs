@@ -308,6 +308,25 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             return IntakeAtSetpoint(targetSetpoint) && ElevatorAtSetpoint(targetSetpoint);
         }
 
+        private bool ElevatorAtSetpoint()
+        {
+            bool elevatorAtSetpoint = Utils.InRange(elevator.GetElevatorHeight(), _elevatorTargetHeight, 5f);
+
+            return elevatorAtSetpoint;
+        }
+        
+        private bool IntakeAtSetpoint()
+        {
+            bool intakeAtSetpoint = Utils.InAngularRange(intakePivot.GetSingleAxisAngle(JointAxis.X), _intakeTargetAngle, 5f);
+
+            return intakeAtSetpoint;
+        }
+
+        private bool SuperstructureAtSetpoint()
+        {
+            return IntakeAtSetpoint() && ElevatorAtSetpoint();
+        }
+        
         private void UpdateAudio()
         {
             if (BaseGameManager.Instance.RobotState == RobotState.Disabled)
@@ -364,7 +383,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
         private void PlacePiece()
         {
-            if (!IsCoralSetpoint()) return;
+            if (!IsCoralSetpoint() || !SuperstructureAtSetpoint()) return;
 
             if (LastSetpoint == ReefscapeSetpoints.L4)
             {
