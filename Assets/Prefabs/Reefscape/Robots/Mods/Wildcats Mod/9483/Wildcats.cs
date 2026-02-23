@@ -132,6 +132,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             
             bool hasCoral = _coralController.HasPiece();
             bool eeHasCoral = _coralController.currentStateNum == coralStowState.stateNum && _coralController.atTarget;
+            bool intakeHasCoral = _coralController.currentStateNum == coralIntakeState.stateNum && _coralController.atTarget;
             
             _coralController.RequestIntake(coralIntake, SuperstructureAtSetpoint(intake) && IntakeAction.IsPressed() && !hasCoral);
             
@@ -168,6 +169,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                 
                 case ReefscapeSetpoints.Intake:
                     if (!hasCoral) _coralController.SetTargetState(coralIntakeState);
+                    if (hasCoral && (!eeHasCoral && !intakeHasCoral)) break;
                     SetSetpoint(intake);
                     break;
                 
@@ -383,7 +385,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
         private void PlacePiece()
         {
-            if (!IsCoralSetpoint() || !SuperstructureAtSetpoint()) return;
+            if (!IsCoralSetpoint() || !SuperstructureAtSetpoint() || !CoralAtState(coralStowState)) return;
 
             if (LastSetpoint == ReefscapeSetpoints.L4)
             {
@@ -393,7 +395,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             else if (LastSetpoint == ReefscapeSetpoints.L1)
             {
                 
-                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 2), 0.2f, 0.5f);
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 2), 0.4f, 0.5f);
                 return;
             }
             _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 4));
