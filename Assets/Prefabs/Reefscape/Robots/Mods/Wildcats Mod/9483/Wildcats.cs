@@ -389,13 +389,13 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
             if (LastSetpoint == ReefscapeSetpoints.L4)
             {
-                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 4), 0.7f, 0.5f);
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 5f), 0.5f, 0.75f);
                 return;
             }
             else if (LastSetpoint == ReefscapeSetpoints.L1)
             {
                 
-                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 2), 0.4f, 0.5f);
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 1, 1), 0.2f, .75f);
                 return;
             }
             _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 4));
