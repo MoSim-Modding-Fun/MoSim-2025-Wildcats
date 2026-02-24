@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 9056004597567481976}
   - component: {fileID: 7810416644333013122}
   - component: {fileID: 8946786257048049582}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3" Compliant Star (35A, 1/2" Hex Bore).004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1306,7 +1306,7 @@ GameObject:
   - component: {fileID: 3155081282565078905}
   - component: {fileID: 7096539742828798592}
   - component: {fileID: 1734462770358750529}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Nut Strip (3/8" Square, 7 Positions, #10-32 Holes, Aligned .5" Hole Spacing).001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1476,7 +1476,7 @@ GameObject:
   - component: {fileID: 6742300902249949424}
   - component: {fileID: 3120337880016318418}
   - component: {fileID: 3517055687059527003}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 15t Steel Bevel Gear (12 DP, 1/2" Hex Bore).002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1761,7 +1761,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211072811703824959}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2444,7 +2444,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352576173484969720}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3375,7 +3375,7 @@ GameObject:
   - component: {fileID: 3351584332796112758}
   - component: {fileID: 2834449291268535297}
   - component: {fileID: 7780498478030384887}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1/2" Rounded Hex (13.75mm) ID Bearing (1.125" OD, 0.313" WD, Shielded,
     Flanged).001
   m_TagString: Untagged
@@ -4256,6 +4256,61 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &559034331836209882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7568102052059756233}
+  - component: {fileID: 1409147956104022712}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7568102052059756233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559034331836209882}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.4452809, y: 0.6927324, z: -0.47722805, w: -0.30675745}
+  m_LocalPosition: {x: 0.08262506, y: 0.24781539, z: -0.16165482}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1307147258058413214}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1409147956104022712
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559034331836209882}
+  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 192
+  m_LayerOverridePriority: 5
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.00052289787
+  m_Height: 0.0012454408
+  m_Direction: 2
+  m_Center: {x: -5.631612e-12, y: -2.1642096e-11, z: 0.0005953605}
 --- !u!1 &560318008559678906
 GameObject:
   m_ObjectHideFlags: 0
@@ -6299,7 +6354,7 @@ GameObject:
   - component: {fileID: 3010300780011987604}
   - component: {fileID: 7255569831929564126}
   - component: {fileID: 2590289728460142343}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3" Compliant Star (50A, 1/2" Hex Bore).003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7003,7 +7058,7 @@ GameObject:
   - component: {fileID: 3432584753657332619}
   - component: {fileID: 1046729196343380287}
   - component: {fileID: 4529401359110670866}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "20t Custom HTD 5mm Pulley (0.375\" Wide,\xE2\x80\x8E *0.5\" Hex Bore).003"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7576,7 +7631,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004339259670470684}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -8309,7 +8364,7 @@ GameObject:
   - component: {fileID: 14115231610189610}
   - component: {fileID: 6589974481460086208}
   - component: {fileID: 5462255381990226753}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1/2" Rounded Hex (10" L, 13.75mm OD).001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9632,7 +9687,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220241904271597445}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10011,7 +10066,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255871007103182589}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -11380,7 +11435,7 @@ GameObject:
   - component: {fileID: 4647118643111890695}
   - component: {fileID: 4271855360780483384}
   - component: {fileID: 3362148874190022030}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3" Compliant Star (35A, 1/2" Hex Bore)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11806,7 +11861,7 @@ GameObject:
   - component: {fileID: 3483175650619396866}
   - component: {fileID: 1976348135467687162}
   - component: {fileID: 4946257616367445073}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "20t Custom HTD 5mm Pulley (0.375\" Wide,\xE2\x80\x8E *0.5\" Hex Bore).002"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12572,7 +12627,7 @@ GameObject:
   - component: {fileID: 335310703908778762}
   - component: {fileID: 3184141030015377090}
   - component: {fileID: 3606264839735392356}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1/2" Rounded Hex (13.75mm) ID Bearing (1.125" OD, 0.313" WD, Shielded,
     Flanged)
   m_TagString: Untagged
@@ -13935,7 +13990,7 @@ GameObject:
   - component: {fileID: 2636229927593004430}
   - component: {fileID: 4393393498335449902}
   - component: {fileID: 6281961247238241171}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3" Compliant Star (50A, 1/2" Hex Bore).002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15086,7 +15141,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003815218935618935}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -15955,7 +16010,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092432660316493746}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -16235,7 +16290,7 @@ GameObject:
   - component: {fileID: 6333674571395749293}
   - component: {fileID: 9160534804346625834}
   - component: {fileID: 5665879795381749381}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 4" Compliant Wheel (50A, 1" Wide, 1/2" Hex Bore)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16636,7 +16691,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144391026943469231}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -18148,7 +18203,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2339896294745179238}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -18173,7 +18228,7 @@ GameObject:
   - component: {fileID: 8488066070711186992}
   - component: {fileID: 6689652170001307503}
   - component: {fileID: 7061708845176450607}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Part 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18457,7 +18512,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2389498928133299540}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -18738,7 +18793,7 @@ GameObject:
   - component: {fileID: 215935973537757040}
   - component: {fileID: 2466735309535083609}
   - component: {fileID: 631930992534957605}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1/2" Rounded Hex (13.75mm) ID Bearing (1.125" OD, 0.313" WD, Shielded,
     Flanged).006
   m_TagString: Untagged
@@ -19883,7 +19938,7 @@ MonoBehaviour:
   coralIntakeState:
     name: Coral Intake State
     stateNum: 1
-    stateMoveSpeed: 50
+    stateMoveSpeed: 100
     stateTarget: {fileID: 6211151246678316674}
     smoothHandoff: 0
     angularSpeed: 0
@@ -19900,14 +19955,14 @@ MonoBehaviour:
     stateMoveSpeed: 150
     stateTarget: {fileID: 8879108445435934613}
     smoothHandoff: 0
-    angularSpeed: 2000
+    angularSpeed: 1000
   coralTransferState3:
     name: Coral Transfer State 3
     stateNum: 4
     stateMoveSpeed: 100
     stateTarget: {fileID: 5250363872094220485}
     smoothHandoff: 0
-    angularSpeed: 2000
+    angularSpeed: 1000
   coralTransferState4:
     name: Coral Transfer State 4
     stateNum: 5
@@ -21019,7 +21074,7 @@ Transform:
   m_GameObject: {fileID: 2738449378977131278}
   serializedVersion: 2
   m_LocalRotation: {x: -0.17155172, y: 0.6859811, z: -0.17155172, w: -0.6859811}
-  m_LocalPosition: {x: -0.13539997, y: 0.4946, z: 0}
+  m_LocalPosition: {x: -0.119, y: 0.503, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21202,7 +21257,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2769296972020225024}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -21448,7 +21503,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2830292729674294433}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -21781,7 +21836,7 @@ GameObject:
   - component: {fileID: 3427073925304577537}
   - component: {fileID: 5575692164512121962}
   - component: {fileID: 5428274587234249914}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3" Compliant Star (35A, 1/2" Hex Bore).003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23564,6 +23619,61 @@ Transform:
   - {fileID: 5884243455239622154}
   m_Father: {fileID: 1735504277998315431}
   m_LocalEulerAnglesHint: {x: -0.473, y: 0, z: 90}
+--- !u!1 &3141749763226572454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2326609894628600594}
+  - component: {fileID: 3037389820579325622}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2326609894628600594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3141749763226572454}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.022590112, y: -0.7067459, z: 0.022590067, w: 0.7067458}
+  m_LocalPosition: {x: 0.12707518, y: 0.15513434, z: -0.29286706}
+  m_LocalScale: {x: 100.000015, y: 100, z: 100.000015}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1307147258058413214}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3037389820579325622
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3141749763226572454}
+  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 192
+  m_LayerOverridePriority: 5
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0003853971
+  m_Height: 0.002610295
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.0012672594}
 --- !u!1 &3154957045683768500
 GameObject:
   m_ObjectHideFlags: 0
@@ -23851,7 +23961,7 @@ GameObject:
   - component: {fileID: 4472425139574367085}
   - component: {fileID: 2397950434972679533}
   - component: {fileID: 6912800667547475028}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1/2" Rounded Hex (13.75mm) ID Bearing (1.125" OD, 0.313" WD, Shielded,
     Flanged).003
   m_TagString: Untagged
@@ -24879,7 +24989,7 @@ GameObject:
   - component: {fileID: 4394933378800915853}
   - component: {fileID: 4348915107937555225}
   - component: {fileID: 999590354186425313}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3" Compliant Star (35A, 1/2" Hex Bore).002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26412,7 +26522,7 @@ GameObject:
   - component: {fileID: 3183510951280282457}
   - component: {fileID: 5914826943771044420}
   - component: {fileID: 6696538305659110124}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 4" Compliant Wheel (35A, 1" Wide, 1/2" Hex Bore)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26700,7 +26810,7 @@ GameObject:
   - component: {fileID: 1765369756764081666}
   - component: {fileID: 5919021999201906169}
   - component: {fileID: 23538212217191488}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Side Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27347,7 +27457,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3593294077988714012}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -28985,7 +29095,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3839800680837587722}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -29180,7 +29290,7 @@ GameObject:
   - component: {fileID: 3452809947069363181}
   - component: {fileID: 5428836464164739488}
   - component: {fileID: 604088235545348405}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "20t Custom HTD 5mm Pulley (0.375\" Wide,\xE2\x80\x8E *0.5\" Hex Bore).001"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29520,7 +29630,7 @@ GameObject:
   - component: {fileID: 8550058943889496396}
   - component: {fileID: 1856318039651891852}
   - component: {fileID: 2244711588569023024}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3" Compliant Star (35A, 1/2" Hex Bore).001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29889,7 +29999,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3938791385942237051}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -32721,7 +32831,7 @@ GameObject:
   - component: {fileID: 746515392866340286}
   - component: {fileID: 4495499844564250607}
   - component: {fileID: 5768074608769634413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 4" Compliant Wheel (40A, 1" Wide, 1/2" Hex Bore)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33062,7 +33172,7 @@ GameObject:
   - component: {fileID: 7820614192890155038}
   - component: {fileID: 5810911278246459133}
   - component: {fileID: 3271728730423819347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1/2" Rounded Hex (13.75mm) ID Bearing (1.125" OD, 0.313" WD, Shielded,
     Flanged).007
   m_TagString: Untagged
@@ -33138,6 +33248,61 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4531873495881981075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1773481701384155006}
+  - component: {fileID: 1713082883842963617}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1773481701384155006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4531873495881981075}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.4452809, y: 0.6927324, z: -0.47722805, w: 0.30675745}
+  m_LocalPosition: {x: -0.08247506, y: 0.24781539, z: -0.16165489}
+  m_LocalScale: {x: 100, y: 99.99996, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1307147258058413214}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1713082883842963617
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4531873495881981075}
+  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 192
+  m_LayerOverridePriority: 5
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.00052289787
+  m_Height: 0.0012454408
+  m_Direction: 2
+  m_Center: {x: -5.631612e-12, y: -2.1642096e-11, z: 0.0005953605}
 --- !u!1 &4546557871395995974
 GameObject:
   m_ObjectHideFlags: 0
@@ -33238,7 +33403,7 @@ GameObject:
   - component: {fileID: 8132198617996210111}
   - component: {fileID: 7564576841526285725}
   - component: {fileID: 7603129028394503245}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 15t Steel Bevel Gear (12 DP, 1/2" Hex Bore).001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34642,7 +34807,7 @@ GameObject:
   - component: {fileID: 2425764131827684117}
   - component: {fileID: 5215903149289800280}
   - component: {fileID: 5789983886191528718}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Poly Thing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38567,7 +38732,7 @@ GameObject:
   - component: {fileID: 3265517014980701214}
   - component: {fileID: 6324761658260667718}
   - component: {fileID: 6769062377701380712}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3" Compliant Star (50A, 1/2" Hex Bore)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38728,6 +38893,59 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5529777667689909085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4611951487086803523}
+  - component: {fileID: 2018708596529780091}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4611951487086803523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5529777667689909085}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5673157, y: -0, z: -0, w: 0.8235005}
+  m_LocalPosition: {x: 0.000075027354, y: 0.14695023, z: -0.2001182}
+  m_LocalScale: {x: 99.999985, y: 99.999985, z: 99.999985}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1307147258058413214}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2018708596529780091
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5529777667689909085}
+  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 192
+  m_LayerOverridePriority: 5
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0024130011, y: 0.00088900025, z: 0.000063500134}
+  m_Center: {x: 2.842173e-13, y: 4.703924e-10, z: -0.000031750234}
 --- !u!1 &5532678918534843660
 GameObject:
   m_ObjectHideFlags: 0
@@ -39556,7 +39774,7 @@ GameObject:
   - component: {fileID: 3289631844245310803}
   - component: {fileID: 3208377961478405529}
   - component: {fileID: 798736498720491314}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Nut Strip (3/8" Square, 7 Positions, #10-32 Holes, Aligned .5" Hole Spacing)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40068,7 +40286,7 @@ GameObject:
   - component: {fileID: 3368272320126253510}
   - component: {fileID: 1673790461479806498}
   - component: {fileID: 1289474149106441754}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "20t Custom HTD 5mm Pulley (0.375\" Wide,\xE2\x80\x8E *0.5\" Hex Bore)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40495,7 +40713,7 @@ GameObject:
   - component: {fileID: 168297116881204323}
   - component: {fileID: 5147412989796796595}
   - component: {fileID: 7863036513928814737}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1/2" Rounded Hex (6.47" L, 13.75mm OD)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41485,7 +41703,7 @@ GameObject:
   - component: {fileID: 952162249236787542}
   - component: {fileID: 2772101197641565470}
   - component: {fileID: 6301924342225945417}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1/2" Rounded Hex (13.75mm) ID Bearing (1.125" OD, 0.313" WD, Shielded,
     Flanged).009
   m_TagString: Untagged
@@ -42392,6 +42610,10 @@ Transform:
   m_Children:
   - {fileID: 3566492800512810651}
   - {fileID: 6836588801401056798}
+  - {fileID: 2326609894628600594}
+  - {fileID: 1773481701384155006}
+  - {fileID: 7568102052059756233}
+  - {fileID: 4611951487086803523}
   m_Father: {fileID: 1073932013172941232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6043336684075148281
@@ -42405,7 +42627,7 @@ GameObject:
   - component: {fileID: 5888213725481401005}
   - component: {fileID: 8358832278572689546}
   - component: {fileID: 7773331244334294107}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 4" Compliant Wheel (60A, 1" Wide, 1/2" Hex Bore)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42688,7 +42910,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6061650576317166934}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -43928,7 +44150,7 @@ GameObject:
   - component: {fileID: 6111144963972723345}
   - component: {fileID: 8500794657725823524}
   - component: {fileID: 3354370238674681375}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3" Compliant Star (50A, 1/2" Hex Bore).001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45920,7 +46142,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6722389960120159954}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -46059,7 +46281,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6739436602846175117}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -49031,7 +49253,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7130377390675032847}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -51601,7 +51823,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7599235144796251393}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -52468,7 +52690,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7797929090474293851}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -53034,7 +53256,7 @@ GameObject:
   - component: {fileID: 5950138120387800537}
   - component: {fileID: 3089330847062788881}
   - component: {fileID: 6184435980206209819}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Side Plate.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53232,7 +53454,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7886727413149159626}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 7753f476d8594a0498685718bfc29b13, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -54054,7 +54276,7 @@ GameObject:
   - component: {fileID: 1561518430293084897}
   - component: {fileID: 1393120692445780802}
   - component: {fileID: 8724138584163317320}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1/2" Rounded Hex (10" L, 13.75mm OD)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55911,7 +56133,7 @@ GameObject:
   - component: {fileID: 1222981998808126389}
   - component: {fileID: 7654880643210629209}
   - component: {fileID: 1337208395071758766}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1/2" Rounded Hex (6.47" L, 13.75mm OD).001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56600,7 +56822,7 @@ GameObject:
   - component: {fileID: 8149218428108692420}
   - component: {fileID: 8684340362276974925}
   - component: {fileID: 2234819977069615276}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 15t Steel Bevel Gear (12 DP, 1/2" Hex Bore)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56685,7 +56907,7 @@ GameObject:
   - component: {fileID: 6385199769125546564}
   - component: {fileID: 4038427142760374891}
   - component: {fileID: 3070265297579723080}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 15t Steel Bevel Gear (12 DP, 1/2" Hex Bore).003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
