@@ -19755,7 +19755,7 @@ MonoBehaviour:
   drivePID:
     kP: 25
     kI: 0
-    kD: 3
+    kD: 2.9
     Max: 1
     Isaturation: 2
   rotatePID:
@@ -19858,7 +19858,7 @@ MonoBehaviour:
     Max: 6
     Isaturation: 0
   algaeDescorePID:
-    kP: 3
+    kP: 1
     kI: 0
     kD: 0
     Max: 7
