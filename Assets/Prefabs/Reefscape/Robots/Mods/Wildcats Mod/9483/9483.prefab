@@ -19998,7 +19998,7 @@ MonoBehaviour:
   climberJointRight: {fileID: 6469372094139918320}
   algaeDescore: {fileID: 8531079045716130473}
   intakePivotPID:
-    kP: 10
+    kP: 5
     kI: 0
     kD: 0
     Max: 8
@@ -20035,7 +20035,6 @@ MonoBehaviour:
   stow: {fileID: 11400000, guid: c8fb3f907371daf4d95d6c363fe47676, type: 2}
   intake: {fileID: 11400000, guid: 522a90b30465278449769e1790320d94, type: 2}
   l1: {fileID: 11400000, guid: dfaf69eead7e4de40a64c3cb88153a0c, type: 2}
-  l1scored: {fileID: 11400000, guid: 712d77d2f36ff444c98d592551c58602, type: 2}
   l2: {fileID: 11400000, guid: e973e6385caec5746a9e2c608ac973a4, type: 2}
   l3: {fileID: 11400000, guid: ee54a75c5c0448d4caa9ee7ec7276063, type: 2}
   l4: {fileID: 11400000, guid: 1c628be29aec5c54d87551e2d23ab408, type: 2}

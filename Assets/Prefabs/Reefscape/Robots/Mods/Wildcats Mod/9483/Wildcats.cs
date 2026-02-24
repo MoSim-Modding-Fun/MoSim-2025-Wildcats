@@ -293,14 +293,14 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
         private bool ElevatorAtSetpoint(WildcatsSetpoint targetSetpoint)
         {
-            bool elevatorAtSetpoint = Utils.InRange(elevator.GetElevatorHeight(), targetSetpoint.elevatorHeight, 5f);
+            bool elevatorAtSetpoint = Utils.InRange(elevator.GetElevatorHeight(), targetSetpoint.elevatorHeight, 2f);
 
             return elevatorAtSetpoint;
         }
         
         private bool IntakeAtSetpoint(WildcatsSetpoint targetSetpoint)
         {
-            bool intakeAtSetpoint = Utils.InAngularRange(intakePivot.GetSingleAxisAngle(JointAxis.X), targetSetpoint.intakeAngle, 5f);
+            bool intakeAtSetpoint = Utils.InAngularRange(intakePivot.GetSingleAxisAngle(JointAxis.X), targetSetpoint.intakeAngle, 2f);
 
             return intakeAtSetpoint;
         }
@@ -312,14 +312,14 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
         private bool ElevatorAtSetpoint()
         {
-            bool elevatorAtSetpoint = Utils.InRange(elevator.GetElevatorHeight(), _elevatorTargetHeight, 5f);
+            bool elevatorAtSetpoint = Utils.InRange(elevator.GetElevatorHeight(), _elevatorTargetHeight, 2f);
 
             return elevatorAtSetpoint;
         }
         
         private bool IntakeAtSetpoint()
         {
-            bool intakeAtSetpoint = Utils.InAngularRange(intakePivot.GetSingleAxisAngle(JointAxis.X), _intakeTargetAngle, 5f);
+            bool intakeAtSetpoint = Utils.InAngularRange(intakePivot.GetSingleAxisAngle(JointAxis.X), _intakeTargetAngle, 2f);
 
             return intakeAtSetpoint;
         }
@@ -398,7 +398,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                 _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 1, 1), 0.2f, .75f);
                 return;
             }
-            _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 4));
+            _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 3));
         }
 
         private void AnimateCoralHandoff()
