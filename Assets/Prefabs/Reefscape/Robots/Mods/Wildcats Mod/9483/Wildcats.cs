@@ -430,7 +430,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             if (CurrentSetpoint == ReefscapeSetpoints.L4 ||
                 LastSetpoint == ReefscapeSetpoints.L4)
             {
-                align.offset = new Vector3(0, 0, 10.5f);
+                align.offset = new Vector3(0, 0, 11f);
             }
             else
             {
