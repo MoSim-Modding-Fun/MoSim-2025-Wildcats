@@ -1,10 +1,6 @@
-# This MoSimulator mod includes the following Robots:
+# This MoSimulator repo includes the source for the following Robots:
 
-- 9483 A Istanbul Wildcats (Now "Overcharge")
-      Pre-Champs Edition
-  
-- 9483 B Istanbul Wildcats (Now "Overcharge")
-      Champs Edition
+- 9483: Pre-Champs and Champs Variations
 
 ### To find out more about MoSim, [click here](https://mosimulator.com)
 
