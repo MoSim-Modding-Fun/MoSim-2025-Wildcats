@@ -18,44 +18,39 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
     {
         #region Serialized Fields and Variables
         
-        [Header("Components")]
-        
+        [Header("Components")]        
         [SerializeField] private GenericElevator elevator;
         [SerializeField] private GenericJoint intakePivot, climber, climberJointLeft, climberJointRight, algaeDescore;
         
-        [Header("PIDS")]
-        
+        [Header("PIDS")]        
         [SerializeField] private PidConstants intakePivotPID, climberPID, climberJointLeftPID, climberJointRightPID, algaeDescorePID;
         
-        [Header("Intake Things")]
-        
+        [Header("Intake Things")]        
         [SerializeField] private GenericRoller topRoller, leftRoller, rightRoller;
         [SerializeField] private Transform leftSensor, rightSensor;
 
-        [Header("Setpoints")]
-        
+        [Header("Setpoints")]        
         [SerializeField] private WildcatsSetpoint stow, intake, l1, l2, l3, l4;
         [SerializeField] private WildcatsSetpoint lowDescore, highDescore;
         
-        [Header("Climb Setpoints")]
-        
+        [Header("Climb Setpoints")]        
         [SerializeField] private WildcatsClimbSetpoint climbStow, prep, climb;
         
-        [Header("Intake Components")]
-        
+        [Header("Intake Components")]        
         [SerializeField] private ReefscapeGamePieceIntake coralIntake;
         
-        [Header("Game Piece States")]
-        
+        [Header("Game Piece States")]        
         [SerializeField] private GamePieceState coralIntakeState, coralTransferState1, coralTransferState2, coralTransferState3, coralTransferState4, coralStowState;
         
-        [Header("Robot Audio")]
+        [Header("Animation Wheels")]
+        [SerializeField] private GenericAnimationJoint[] intakeWheels, endEffectorWheels;
+        [SerializeField] private float intakeWheelSpeeds, endEffectorWheelsSpeeds;
         
+        [Header("Robot Audio")]        
         [SerializeField] private AudioSource rollerSource;
         [SerializeField] private AudioClip intakeClip;
         
-        [Header("Funnel Close Audio")]
-        
+        [Header("Funnel Close Audio")]        
         [SerializeField] private AudioSource funnelCloseSource;
         [SerializeField] private AudioClip funnelCloseAudio;
         [SerializeField] private BoxCollider coralTrigger;
@@ -171,8 +166,8 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                     if (!hasCoral) _coralController.SetTargetState(coralIntakeState);
                     if (hasCoral && (!eeHasCoral && !intakeHasCoral)) break;
                     SetSetpoint(intake);
+                    SetIntakeWheels(_coralController.atTarget ? 0 : intakeWheelSpeeds * 2);
                     break;
-                
                 
                 case ReefscapeSetpoints.LowAlgae: 
                     SetSetpoint(lowDescore); 
@@ -197,7 +192,8 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                     break;
                 
                 case ReefscapeSetpoints.Place: 
-                    PlacePiece(); 
+                    PlacePiece();
+                    if (OuttakeAction.IsPressed()) SetEndEffectorWheels(endEffectorWheelsSpeeds); else SetEndEffectorWheels(0);
                     break;
                 
                 case ReefscapeSetpoints.RobotSpecial: 
@@ -268,6 +264,22 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         private void SetAlgaeDescoreAngle(float algaeDescoreAngle)
         {
             _algaeDescoreTargetAngle = algaeDescoreAngle;
+        }
+
+        private void SetIntakeWheels(float speed)
+        {
+            foreach (var roller in intakeWheels)
+            {
+                roller.VelocityRoller(speed);
+            }
+        }
+        
+        private void SetEndEffectorWheels(float speed)
+        {
+            foreach (var roller in endEffectorWheels)
+            {
+                roller.VelocityRoller(speed);
+            }
         }
 
         private void UpdateSetpoints()
@@ -383,9 +395,22 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                    LastSetpoint == ReefscapeSetpoints.L1;
         }
 
+        private WildcatsSetpoint GetCurrentCoralSetpointSetpoint()
+        {
+            switch (LastSetpoint)
+            {
+                case ReefscapeSetpoints.L4: return l4;
+                case ReefscapeSetpoints.L3: return l3;
+                case ReefscapeSetpoints.L2: return l2;
+                case ReefscapeSetpoints.L1: return l1;
+            }
+
+            return l4;
+        }
+
         private void PlacePiece()
         {
-            if (!IsCoralSetpoint() || !SuperstructureAtSetpoint() || !CoralAtState(coralStowState)) return;
+            if (!IsCoralSetpoint() || !SuperstructureAtSetpoint(GetCurrentCoralSetpointSetpoint()) || !CoralAtState(coralStowState)) return;
 
             if (LastSetpoint == ReefscapeSetpoints.L4)
             {
@@ -403,7 +428,9 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
         private void AnimateCoralHandoff()
         {
-            if (SuperstructureAtSetpoint(stow) && CoralAtState(coralIntakeState))
+            if (!SuperstructureAtSetpoint(stow)) return;
+            
+            if (CoralAtState(coralIntakeState))
             {
                 _coralController.SetTargetState(coralTransferState1);
             } 
@@ -423,6 +450,24 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             {
                 _coralController.SetTargetState(coralStowState);
             }
+
+            if (CoralAtState(coralStowState))
+            {
+                SetIntakeWheels(0);
+            }
+            else if (SuperstructureAtSetpoint(stow) && _coralController.HasPiece())
+            {
+                if (_coralController.HasPiece()) SetIntakeWheels(-1 * intakeWheelSpeeds);
+
+                if (_coralController.currentStateNum != coralStowState.stateNum)
+                {
+                    SetEndEffectorWheels(endEffectorWheelsSpeeds);
+                }
+                else
+                {
+                    SetEndEffectorWheels(-endEffectorWheelsSpeeds);
+                }
+            }
         }
 
         private void AutoAlignLogic()
@@ -430,11 +475,11 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             if (CurrentSetpoint == ReefscapeSetpoints.L4 ||
                 LastSetpoint == ReefscapeSetpoints.L4)
             {
-                align.offset = new Vector3(0, 0, 11f);
+                align.offset = new Vector3(0.0f, 0, 11f);
             }
             else
             {
-                align.offset = new Vector3(0, 0, 7);
+                align.offset = new Vector3(0.0f, 0, 7f);
             }
         }
         
