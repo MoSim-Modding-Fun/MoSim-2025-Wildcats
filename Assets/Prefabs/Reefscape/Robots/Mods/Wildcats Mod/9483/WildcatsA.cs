@@ -14,7 +14,7 @@ using UnityEngine;
 
 namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 {
-    public class Wildcats: ReefscapeRobotBase
+    public class WildcatsA: ReefscapeRobotBase
     {
         #region Serialized Fields and Variables
         

@@ -15906,8 +15906,8 @@ GameObject:
   - component: {fileID: 3359237141181454309}
   - component: {fileID: -4717869558092279391}
   - component: {fileID: 6699703931475903775}
-  - component: {fileID: 4427434534593847740}
   - component: {fileID: 4729452043084202785}
+  - component: {fileID: -8467787098375909807}
   m_Layer: 6
   m_Name: 9483A
   m_TagString: BlueRobot
@@ -16240,7 +16240,7 @@ MonoBehaviour:
   Climbed: {fileID: 2800000, guid: b3eb1b064e441444690caffbd939d3de, type: 3}
   AutoAligning: {fileID: 2800000, guid: 155136162c02c734591de6be1a521d30, type: 3}
   Processor: {fileID: 2800000, guid: b3eb1b064e441444690caffbd939d3de, type: 3}
---- !u!114 &4427434534593847740
+--- !u!114 &4729452043084202785
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16249,7 +16249,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2534371394911199621}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6bd0be80aa2e514a94cb8de0664b8b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 40c9f738d2c54a48ad3e959efd15d13b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cageScoringTrigger: {fileID: 59840457310537632}
+  autoClimbTriggers: []
+--- !u!114 &-8467787098375909807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2534371394911199621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d715e85dc3486541bdfcb226c09de12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   alliance: 0
@@ -16267,132 +16281,111 @@ MonoBehaviour:
     <RequireIntaking>k__BackingField: 1
     <TargetTransform>k__BackingField: {fileID: 0}
     <DrawDebugLines>k__BackingField: 0
-  superCycler: 1
-  elevator: {fileID: 4000945422463968738}
+  superCycler: 0
+  elevator: {fileID: 0}
   intakePivot: {fileID: 0}
-  climber: {fileID: 6809587936786418664}
-  climberJointLeft: {fileID: 6487044837337295200}
-  climberJointRight: {fileID: 6469372094139918320}
-  algaeDescore: {fileID: 8531079045716130473}
+  climber: {fileID: 0}
+  climberJointLeft: {fileID: 0}
+  climberJointRight: {fileID: 0}
+  algaeDescore: {fileID: 0}
   intakePivotPID:
-    kP: 5
+    kP: 0
     kI: 0
     kD: 0
-    Max: 8
+    Max: 0
     Isaturation: 0
   climberPID:
-    kP: 10
+    kP: 0
     kI: 0
     kD: 0
-    Max: 2
+    Max: 0
     Isaturation: 0
   climberJointLeftPID:
-    kP: 2
+    kP: 0
     kI: 0
     kD: 0
-    Max: 5
+    Max: 0
     Isaturation: 0
   climberJointRightPID:
-    kP: 2
+    kP: 0
     kI: 0
     kD: 0
-    Max: 6
+    Max: 0
     Isaturation: 0
   algaeDescorePID:
-    kP: 0.25
+    kP: 0
     kI: 0
     kD: 0
-    Max: 6
+    Max: 0
     Isaturation: 0
   topRoller: {fileID: 0}
   leftRoller: {fileID: 0}
   rightRoller: {fileID: 0}
   leftSensor: {fileID: 0}
   rightSensor: {fileID: 0}
-  stow: {fileID: 11400000, guid: c8fb3f907371daf4d95d6c363fe47676, type: 2}
-  intake: {fileID: 11400000, guid: 522a90b30465278449769e1790320d94, type: 2}
-  l1: {fileID: 11400000, guid: dfaf69eead7e4de40a64c3cb88153a0c, type: 2}
-  l2: {fileID: 11400000, guid: e973e6385caec5746a9e2c608ac973a4, type: 2}
-  l3: {fileID: 11400000, guid: ee54a75c5c0448d4caa9ee7ec7276063, type: 2}
-  l4: {fileID: 11400000, guid: 1c628be29aec5c54d87551e2d23ab408, type: 2}
-  lowDescore: {fileID: 11400000, guid: f5a7594624f491d488e05a70a03c9136, type: 2}
-  highDescore: {fileID: 11400000, guid: d46b86ad45e304c44a822163d430a2b7, type: 2}
-  climbStow: {fileID: 11400000, guid: 2e598064910ef0d4a9c07dc2c6f064e9, type: 2}
-  prep: {fileID: 11400000, guid: 0cb373dda6ad7ba4d8fea1a875c06a78, type: 2}
-  climb: {fileID: 11400000, guid: 7904e5234fdbde440b71102a4e700c9b, type: 2}
+  stow: {fileID: 0}
+  intake: {fileID: 0}
+  l1: {fileID: 0}
+  l2: {fileID: 0}
+  l3: {fileID: 0}
+  l4: {fileID: 0}
+  lowDescore: {fileID: 0}
+  highDescore: {fileID: 0}
+  climbStow: {fileID: 0}
+  prep: {fileID: 0}
+  climb: {fileID: 0}
   coralIntake: {fileID: 0}
   coralIntakeState:
-    name: Coral Intake State
-    stateNum: 1
-    stateMoveSpeed: 100
+    name: 
+    stateNum: 0
+    stateMoveSpeed: 0
     stateTarget: {fileID: 0}
     smoothHandoff: 0
     angularSpeed: 0
   coralTransferState1:
-    name: Coral Transfer State 1
-    stateNum: 2
-    stateMoveSpeed: 50
-    stateTarget: {fileID: 1077921692267696069}
+    name: 
+    stateNum: 0
+    stateMoveSpeed: 0
+    stateTarget: {fileID: 0}
     smoothHandoff: 0
     angularSpeed: 0
   coralTransferState2:
-    name: Coral Transfer State 2
-    stateNum: 3
-    stateMoveSpeed: 150
-    stateTarget: {fileID: 8879108445435934613}
+    name: 
+    stateNum: 0
+    stateMoveSpeed: 0
+    stateTarget: {fileID: 0}
     smoothHandoff: 0
-    angularSpeed: 1000
+    angularSpeed: 0
   coralTransferState3:
-    name: Coral Transfer State 3
-    stateNum: 4
-    stateMoveSpeed: 100
-    stateTarget: {fileID: 5250363872094220485}
+    name: 
+    stateNum: 0
+    stateMoveSpeed: 0
+    stateTarget: {fileID: 0}
     smoothHandoff: 0
-    angularSpeed: 1000
+    angularSpeed: 0
   coralTransferState4:
-    name: Coral Transfer State 4
-    stateNum: 5
-    stateMoveSpeed: 50
-    stateTarget: {fileID: 4146036060608801597}
+    name: 
+    stateNum: 0
+    stateMoveSpeed: 0
+    stateTarget: {fileID: 0}
     smoothHandoff: 0
     angularSpeed: 0
   coralStowState:
-    name: Coral Stow State
-    stateNum: 6
-    stateMoveSpeed: 50
-    stateTarget: {fileID: 4973423391262329407}
+    name: 
+    stateNum: 0
+    stateMoveSpeed: 0
+    stateTarget: {fileID: 0}
     smoothHandoff: 0
     angularSpeed: 0
-  intakeWheels:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  endEffectorWheels:
-  - {fileID: 4382495952918181049}
-  - {fileID: 5787418775508346226}
-  - {fileID: 7305385813661109810}
-  intakeWheelSpeeds: 450
-  endEffectorWheelsSpeeds: 450
+  intakeWheels: []
+  endEffectorWheels: []
+  intakeWheelSpeeds: 0
+  endEffectorWheelsSpeeds: 0
   rollerSource: {fileID: 0}
   intakeClip: {fileID: 0}
   funnelCloseSource: {fileID: 0}
   funnelCloseAudio: {fileID: 0}
   coralTrigger: {fileID: 0}
---- !u!114 &4729452043084202785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2534371394911199621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40c9f738d2c54a48ad3e959efd15d13b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cageScoringTrigger: {fileID: 59840457310537632}
-  autoClimbTriggers: []
 --- !u!1 &2541247830853460429
 GameObject:
   m_ObjectHideFlags: 0
