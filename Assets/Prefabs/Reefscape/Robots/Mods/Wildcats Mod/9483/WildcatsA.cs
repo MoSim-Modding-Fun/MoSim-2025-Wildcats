@@ -341,6 +341,8 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         {
             if (!IsCoralSetpoint() || !AtSetpoint(GetCurrentCoralSetpointSetpoint()) || !CoralAtState(coralStowState)) return;
 
+            _coralController.SetTargetState(funnelCoralState);
+
             if (LastSetpoint == ReefscapeSetpoints.L4)
             {
                 _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 4), 0.35f, 0.6f);
