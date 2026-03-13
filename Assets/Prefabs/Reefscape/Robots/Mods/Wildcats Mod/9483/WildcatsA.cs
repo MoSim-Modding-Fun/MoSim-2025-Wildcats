@@ -141,6 +141,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             }
             
             AnimateCoralHandoff();
+            if (!hasCoral) _coralController.SetTargetState(funnelCoralState);
             
             switch (CurrentSetpoint)
             {
@@ -149,8 +150,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                     SetAlgaeDescoreAngle(0); 
                     break;
                 
-                case ReefscapeSetpoints.Intake:
-                    if (!hasCoral) _coralController.SetTargetState(funnelCoralState);
+                case ReefscapeSetpoints.Intake:;
                     SetSetpoint(intake);
                     break;
                 
