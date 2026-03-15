@@ -84,6 +84,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
             _coralController.gamePieceStates = new[]
             {
+                funnelCoralState,
                 coralTransferState1,
                 coralStowState
             };
@@ -142,17 +143,20 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             }
             
             AnimateCoralHandoff();
-            if (!hasCoral) _coralController.SetTargetState(funnelCoralState);
             
             switch (CurrentSetpoint)
             {
                 case ReefscapeSetpoints.Stow: 
                     SetSetpoint(stow); 
                     SetAlgaeDescoreAngle(0); 
+                    SetEndEffectorWheels(_coralController.HasPiece() && AtSetpoint(intake) ? 0 : endEffectorWheelsSpeeds * 1.5f);
                     break;
                 
-                case ReefscapeSetpoints.Intake:;
+                case ReefscapeSetpoints.Intake:
+                    if (!_coralController.HasPiece()) _coralController.SetTargetState(funnelCoralState);
+                    if (_coralController.HasPiece()) break;
                     SetSetpoint(intake);
+                    SetEndEffectorWheels(_coralController.HasPiece() && AtSetpoint(intake) ? 0 : endEffectorWheelsSpeeds * 1.5f);
                     break;
                 
                 case ReefscapeSetpoints.LowAlgae: 
@@ -184,15 +188,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                 
                 case ReefscapeSetpoints.RobotSpecial: 
                     SetAlgaeDescoreAngle(0); 
-                    if (_coralController.currentStateNum == funnelCoralState.stateNum)
-                    {
-                        _coralController.SetTargetState(coralStowState);
-                    }
-                    else
-                    {
-                        _coralController.SetTargetState(funnelCoralState);
-                    }
-                    SetState(ReefscapeSetpoints.Stow);
+                    SetState(ReefscapeSetpoints.Stow); 
                     break;
                 case ReefscapeSetpoints.Processor: 
                     SetAlgaeDescoreAngle(0); 
@@ -353,7 +349,9 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
         private void PlacePiece()
         {
-            // if (!IsCoralSetpoint() || !AtSetpoint(GetCurrentCoralSetpointSetpoint()) || !CoralAtState(coralStowState)) return;
+            if (!IsCoralSetpoint() || !AtSetpoint(GetCurrentCoralSetpointSetpoint()) || !CoralAtState(coralStowState)) return;
+
+            _coralController.SetTargetState(funnelCoralState);
 
             if (LastSetpoint == ReefscapeSetpoints.L4)
             {
@@ -368,11 +366,25 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             }
             _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 3));
         }
-
+        
         private void AnimateCoralHandoff()
         {
-            return;
-            if (AtSetpoint(intake) && !CoralAtState(coralStowState))
+            if (!AtSetpoint(stow)) return;
+            
+            if (CoralAtState(funnelCoralState))
+            {
+                _coralController.SetTargetState(coralTransferState1);
+            } 
+            else if (CoralAtState(coralTransferState1))
+            {
+                _coralController.SetTargetState(coralStowState);
+            }
+            
+            if (CoralAtState(coralStowState))
+            {
+                SetEndEffectorWheels(0);
+            }
+            else if (AtSetpoint(stow) && _coralController.HasPiece())
             {
                 if (_coralController.currentStateNum != coralStowState.stateNum)
                 {
@@ -383,20 +395,6 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                     SetEndEffectorWheels(-endEffectorWheelsSpeeds);
                 }
             }
-            /*
-            if (CoralAtState(funnelCoralState))
-            {
-                _coralController.SetTargetState(coralTransferState1);
-            }
-            else if (CoralAtState(coralTransferState1))
-            {
-                _coralController.SetTargetState(coralStowState);
-            }
-            else
-            {*/
-                _coralController.SetTargetState(funnelCoralState);
-            //}
-            
         }
 
         private void AutoAlignLogic()

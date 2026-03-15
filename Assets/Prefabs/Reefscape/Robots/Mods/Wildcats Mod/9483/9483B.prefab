@@ -20396,31 +20396,31 @@ MonoBehaviour:
     smoothHandoff: 0
     angularSpeed: 0
   coralTransferState1:
-    name: Coral Transfer State 1
-    stateNum: 2
-    stateMoveSpeed: 50
-    stateTarget: {fileID: 1077921692267696069}
+    name: 
+    stateNum: 0
+    stateMoveSpeed: 0
+    stateTarget: {fileID: 0}
     smoothHandoff: 0
     angularSpeed: 0
   coralTransferState2:
-    name: Coral Transfer State 2
-    stateNum: 3
-    stateMoveSpeed: 150
-    stateTarget: {fileID: 8879108445435934613}
+    name: 
+    stateNum: 0
+    stateMoveSpeed: 0
+    stateTarget: {fileID: 0}
     smoothHandoff: 0
-    angularSpeed: 1000
+    angularSpeed: 0
   coralTransferState3:
-    name: Coral Transfer State 3
-    stateNum: 4
-    stateMoveSpeed: 100
-    stateTarget: {fileID: 5250363872094220485}
+    name: 
+    stateNum: 0
+    stateMoveSpeed: 0
+    stateTarget: {fileID: 0}
     smoothHandoff: 0
-    angularSpeed: 1000
+    angularSpeed: 0
   coralTransferState4:
-    name: Coral Transfer State 4
-    stateNum: 5
-    stateMoveSpeed: 50
-    stateTarget: {fileID: 4146036060608801597}
+    name: 
+    stateNum: 0
+    stateMoveSpeed: 0
+    stateTarget: {fileID: 0}
     smoothHandoff: 0
     angularSpeed: 0
   coralStowState:
@@ -39254,7 +39254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4146036060608801597}
   m_Layer: 6
-  m_Name: Coral Transfer State 4
+  m_Name: Coral Handoff State 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41803,7 +41803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1077921692267696069}
   m_Layer: 6
-  m_Name: Coral Transfer State 1
+  m_Name: Coral Handoff State 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53004,7 +53004,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8879108445435934613}
   m_Layer: 6
-  m_Name: Coral Transfer State 2
+  m_Name: Coral Handoff State 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58844,7 +58844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5250363872094220485}
   m_Layer: 6
-  m_Name: Coral Transfer State 3
+  m_Name: Coral Handoff State 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

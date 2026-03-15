@@ -7434,8 +7434,8 @@ MonoBehaviour:
   hasGamePiece: 0
   requestIntake: 0
   pieceName: 
-  intakeSpeed: 80
-  intakeForce: 20
+  intakeSpeed: 100
+  intakeForce: 30
   usePlanarTolerancing: 1
   boxExtents: {x: 6, y: 6, z: 10}
   maxDistance: 2
@@ -18490,7 +18490,7 @@ MonoBehaviour:
     <DropForceVariance>k__BackingField: 0
     <RotationVariance>k__BackingField: 0
     <DropOrientation>k__BackingField: 1
-    <RequireIntaking>k__BackingField: 1
+    <RequireIntaking>k__BackingField: 0
     <TargetTransform>k__BackingField: {fileID: 4973423391262329407}
     <DrawDebugLines>k__BackingField: 0
   superCycler: 1
@@ -18538,21 +18538,21 @@ MonoBehaviour:
   funnelCoralState:
     name: Funnel Coral State
     stateNum: 1
-    stateMoveSpeed: 50
+    stateMoveSpeed: 85
     stateTarget: {fileID: 2709253243694930890}
     smoothHandoff: 0
     angularSpeed: 30
   coralTransferState1:
     name: Coral Transfer State
     stateNum: 2
-    stateMoveSpeed: 100
+    stateMoveSpeed: 70
     stateTarget: {fileID: 4146036060608801597}
     smoothHandoff: 0
     angularSpeed: 0
   coralStowState:
     name: Coral Stow State
     stateNum: 3
-    stateMoveSpeed: 100
+    stateMoveSpeed: 70
     stateTarget: {fileID: 4973423391262329407}
     smoothHandoff: 0
     angularSpeed: 0
