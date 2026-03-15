@@ -143,6 +143,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             }
             
             AnimateCoralHandoff();
+            SetEndEffectorWheels(_coralController.HasPiece() || !AtSetpoint(intake) ? 0 : endEffectorWheelsSpeeds * 1.5f);
             
             switch (CurrentSetpoint)
             {
@@ -156,7 +157,6 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                     if (!_coralController.HasPiece()) _coralController.SetTargetState(funnelCoralState);
                     if (_coralController.HasPiece()) break;
                     SetSetpoint(intake);
-                    SetEndEffectorWheels(_coralController.HasPiece() && AtSetpoint(intake) ? 0 : endEffectorWheelsSpeeds * 1.5f);
                     break;
                 
                 case ReefscapeSetpoints.LowAlgae: 
