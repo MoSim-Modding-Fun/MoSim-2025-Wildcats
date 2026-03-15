@@ -20397,31 +20397,31 @@ MonoBehaviour:
     smoothHandoff: 0
     angularSpeed: 0
   coralTransferState1:
-    name: 
-    stateNum: 0
-    stateMoveSpeed: 0
-    stateTarget: {fileID: 0}
+    name: Coral Transfer State 1
+    stateNum: 2
+    stateMoveSpeed: 50
+    stateTarget: {fileID: 1077921692267696069}
     smoothHandoff: 0
     angularSpeed: 0
   coralTransferState2:
-    name: 
-    stateNum: 0
-    stateMoveSpeed: 0
-    stateTarget: {fileID: 0}
+    name: Coral Transfer State 2
+    stateNum: 3
+    stateMoveSpeed: 150
+    stateTarget: {fileID: 8879108445435934613}
     smoothHandoff: 0
-    angularSpeed: 0
+    angularSpeed: 1000
   coralTransferState3:
-    name: 
-    stateNum: 0
-    stateMoveSpeed: 0
-    stateTarget: {fileID: 0}
+    name: Coral Transfer State 3
+    stateNum: 4
+    stateMoveSpeed: 100
+    stateTarget: {fileID: 5250363872094220485}
     smoothHandoff: 0
-    angularSpeed: 0
+    angularSpeed: 1000
   coralTransferState4:
-    name: 
-    stateNum: 0
-    stateMoveSpeed: 0
-    stateTarget: {fileID: 0}
+    name: Coral Transfer State 4
+    stateNum: 5
+    stateMoveSpeed: 50
+    stateTarget: {fileID: 4146036060608801597}
     smoothHandoff: 0
     angularSpeed: 0
   coralStowState:
