@@ -18439,7 +18439,6 @@ MonoBehaviour:
   - {fileID: 2234918258138346350}
   - {fileID: 6154384726421715733}
   - {fileID: 3256554278776041580}
-  - {fileID: 0}
   shaderGraphShader: {fileID: -6465566751694194690, guid: 88d82d76b25302e4f81533f3cee81aab,
     type: 3}
   hasAlgae: {fileID: 2800000, guid: 8a2dd088b5fa4264281546728edb0d60, type: 3}
@@ -18480,9 +18479,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alliance: 0
-  bumperMeshes: []
-  blueBumperMaterial: {fileID: 0}
-  redBumperMaterial: {fileID: 0}
+  bumperMeshes:
+  - {fileID: 839118213293177097}
+  blueBumperMaterial: {fileID: 2100000, guid: 2563daee00ab8df4d88dd70f633fead4, type: 2}
+  redBumperMaterial: {fileID: 2100000, guid: e0ca54ac3b0d506458ac43e0d5ead612, type: 2}
   <CurrentSetpoint>k__BackingField: 0
   <CurrentCoralStationMode>k__BackingField:
     <DropType>k__BackingField: 1
