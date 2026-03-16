@@ -18220,10 +18220,10 @@ MonoBehaviour:
   - {fileID: 6765386691632932968}
   elevatorType: 0
   pidConstants:
-    kP: 15
+    kP: 13
     kI: 0
     kD: 0.1
-    Max: 3
+    Max: 2.8
     Isaturation: 0
   stagesPidConstants:
     kP: 100
