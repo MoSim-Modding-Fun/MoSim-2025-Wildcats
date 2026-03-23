@@ -18254,7 +18254,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 98
   m_Drag: 3
-  m_AngularDrag: 5
+  m_AngularDrag: 7
   m_CenterOfMass: {x: 0, y: -0.067, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -18293,7 +18293,7 @@ MonoBehaviour:
     _encryptedValue: 211527489
   falloffPercent: 0.075
   falloffExponent: 10
-  steerMultiplier: 1.2
+  steerMultiplier: 1
   speedDebug: 0
   swerveAudioMixerGroup: {fileID: 4093094553572483033, guid: ed4b10d8b69fb1240aaf15a3cba9d0bd,
     type: 2}

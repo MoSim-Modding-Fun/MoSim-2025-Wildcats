@@ -162,12 +162,13 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
                 case ReefscapeSetpoints.Climb:
                     SetSetpoint(intake);
-                    SetClimberAngle(SuperstructureAtSetpoint(intake) ? prep : climbStow);
+                    if (SuperstructureAtSetpoint(intake)) SetClimberAngle(prep);
                     break;
 
                 case ReefscapeSetpoints.Climbed:
                     SetSetpoint(intake);
                     SetClimberAngle(climb);
+                    SetPivotAngle(climb);
                     break;
 
                 case ReefscapeSetpoints.Place:
@@ -191,6 +192,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             else
             {
                 DriveController.SetDriveMp(1);
+                SetPivotAngle(climbStow);
             }
 
             _coralController.MoveIntake(coralIntake, coralIntakeState.stateTarget);
@@ -227,12 +229,17 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             _intakeTargetAngle = setpoint.intakeAngle;
         }
 
-        private void SetClimberAngle(WildcatsClimbSetpoint setpoint)
+        private void SetPivotAngle(WildcatsClimbSetpoint setpoint)
         {
             _climberTargetAngle = setpoint.elevatorAngle;
+        }
+
+        private void SetClimberAngle(WildcatsClimbSetpoint setpoint)
+        {
             _climberLeftPincerTarget = setpoint.leftPincerAngle;
             _climberRightPincerTarget = setpoint.rightPincerAngle;
         }
+
 
         private void SetAlgaeDescoreAngle(float algaeDescoreAngle)
         {
@@ -418,7 +425,8 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
         private void AutoAlignLogic()
         {
-            if (CurrentSetpoint == ReefscapeSetpoints.L4 || LastSetpoint == ReefscapeSetpoints.L4)
+            if (CurrentSetpoint == ReefscapeSetpoints.L4 || LastSetpoint == ReefscapeSetpoints.L4 ||
+                CurrentSetpoint == ReefscapeSetpoints.L1 || LastSetpoint == ReefscapeSetpoints.L1)
             {
                 align.offset = new Vector3(0.0f, 0, 11f);
             }

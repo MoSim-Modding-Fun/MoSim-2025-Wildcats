@@ -173,7 +173,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                 
                 case ReefscapeSetpoints.Climb: 
                     SetSetpoint(intake); 
-                    SetClimberAngle(AtSetpoint(intake) ? prep : climbStow); 
+                    if (AtSetpoint(intake)) SetClimberAngle(prep);
                     break;
                 
                 case ReefscapeSetpoints.Climbed: 
@@ -211,6 +211,7 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             else
             {
                 DriveController.SetDriveMp(1);
+                SetPivotAngle(climbStow);
             }
             
             UpdateSetpoints();
@@ -224,9 +225,13 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             _elevatorTargetHeight = setpoint.elevatorHeight;
         }
 
-        private void SetClimberAngle(WildcatsClimbSetpoint setpoint)
+        private void SetPivotAngle(WildcatsClimbSetpoint setpoint)
         {
             _climberTargetAngle = setpoint.elevatorAngle;
+        }
+
+        private void SetClimberAngle(WildcatsClimbSetpoint setpoint)
+        {
             _climberLeftPincerTarget = setpoint.leftPincerAngle;
             _climberRightPincerTarget = setpoint.rightPincerAngle;
         }
@@ -403,8 +408,8 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
         private void AutoAlignLogic()
         {
-            if (CurrentSetpoint == ReefscapeSetpoints.L4 ||
-                LastSetpoint == ReefscapeSetpoints.L4)
+            if (CurrentSetpoint == ReefscapeSetpoints.L4 || LastSetpoint == ReefscapeSetpoints.L4 ||
+                CurrentSetpoint == ReefscapeSetpoints.L1 || LastSetpoint == ReefscapeSetpoints.L1)
             {
                 align.offset = new Vector3(0.0f, 0, 11f);
             }
