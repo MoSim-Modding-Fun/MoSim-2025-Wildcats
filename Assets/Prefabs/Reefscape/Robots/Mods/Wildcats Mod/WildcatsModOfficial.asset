@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713155721937481dbf0332a6dcf52567, type: 3}
   m_Name: WildcatsModOfficial
   m_EditorClassIdentifier: 
-  modpackName: Official Wildcats Mod
+  modpackName: Wildcats Mod
   modpackVersion: 1.0.0
-  authorName: Cascade Studios, vprabh, and Seb
-  description: 
+  authorName: Seb, vprabh, Ari
+  description: meow
   robots:
   - {fileID: 11400000, guid: 5924185b6ef29ea428c4a3bc60f585b4, type: 2}

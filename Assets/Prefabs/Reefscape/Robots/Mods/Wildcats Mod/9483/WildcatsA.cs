@@ -127,9 +127,14 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
                 SetRobotMode(ReefscapeRobotMode.Coral);
             }
 
-            if (CurrentSetpoint == ReefscapeSetpoints.Place && DistanceToReef(GetClosestReef()) > 2)
+            if (DistanceToReef(GetClosestReef()) > 2)
             {
-                SetState(ReefscapeSetpoints.Stow);
+                if (CurrentSetpoint == ReefscapeSetpoints.Place ||
+                    CurrentSetpoint == ReefscapeSetpoints.LowAlgae ||
+                    CurrentSetpoint == ReefscapeSetpoints.HighAlgae)
+                {
+                    SetState(ReefscapeSetpoints.Stow);
+                }
             }
             
             bool hasCoral = _coralController.atTarget;

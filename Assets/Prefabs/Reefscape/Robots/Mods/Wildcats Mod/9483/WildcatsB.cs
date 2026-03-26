@@ -57,6 +57,9 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         private float _elevatorTargetHeight, _intakeTargetAngle, _climberTargetAngle, _climberLeftPincerTarget, _climberRightPincerTarget, _algaeDescoreTargetAngle;
 
         private ReefscapeAutoAlign align;
+        
+        private Vector3 _blueReef;
+        private Vector3 _redReef;
 
         #endregion
 
@@ -100,6 +103,9 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
             scoreSource.clip = scoreClip;
             scoreSource.loop = true;
             scoreSource.Stop();
+            
+            _blueReef = GameObject.Find("BlueReef").transform.position;
+            _redReef = GameObject.Find("RedReef").transform.position;
         }
 
         private void LateUpdate()
@@ -114,6 +120,21 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         private void FixedUpdate()
         {
             AutoAlignLogic();
+
+            if (CurrentRobotMode == ReefscapeRobotMode.Algae)
+            {
+                SetRobotMode(ReefscapeRobotMode.Coral);
+            }
+
+            if (DistanceToReef(GetClosestReef()) > 2)
+            {
+                if (CurrentSetpoint == ReefscapeSetpoints.Place ||
+                    CurrentSetpoint == ReefscapeSetpoints.LowAlgae ||
+                    CurrentSetpoint == ReefscapeSetpoints.HighAlgae)
+                {
+                    SetState(ReefscapeSetpoints.Stow);
+                }
+            }
 
             bool hasCoral = _coralController.HasPiece();
             bool eeHasCoral = _coralController.currentStateNum == coralStowState.stateNum && _coralController.atTarget;
@@ -275,6 +296,16 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         #endregion
 
         #region Logic Helpers
+        
+        private Vector3 GetClosestReef()
+        {
+            return DistanceToReef(_blueReef) < DistanceToReef(_redReef) ? _blueReef : _redReef;
+        }
+        
+        private float DistanceToReef(Vector3 reefPos)
+        {
+            return Mathf.Sqrt(Mathf.Pow(transform.position.x - reefPos.x, 2) + Mathf.Pow(transform.position.z - reefPos.z, 2));
+        }
 
         private bool CoralAtState(GamePieceState state)
         {
