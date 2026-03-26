@@ -62,6 +62,9 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         
         private ReefscapeAutoAlign align;
         
+        private Vector3 _blueReef;
+        private Vector3 _redReef;
+        
         #endregion
         
         protected override void Start()
@@ -102,6 +105,9 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
 
             soundDetector = new OverlapBoxBounds(coralTrigger);
             canClack = true;
+            
+            _blueReef = GameObject.Find("BlueReef").transform.position;
+            _redReef = GameObject.Find("RedReef").transform.position;
         }
 
         private void LateUpdate()
@@ -115,6 +121,16 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         private void FixedUpdate()
         {
             AutoAlignLogic();
+
+            if (CurrentRobotMode == ReefscapeRobotMode.Algae)
+            {
+                SetRobotMode(ReefscapeRobotMode.Coral);
+            }
+
+            if (CurrentSetpoint == ReefscapeSetpoints.Place && DistanceToReef(GetClosestReef()) > 2)
+            {
+                SetState(ReefscapeSetpoints.Stow);
+            }
             
             bool hasCoral = _coralController.atTarget;
             
@@ -264,6 +280,16 @@ namespace Prefabs.Reefscape.Robots.Mods.Wildcats._9483
         
 
         #region Logic Helpers
+        
+        private Vector3 GetClosestReef()
+        {
+            return DistanceToReef(_blueReef) < DistanceToReef(_redReef) ? _blueReef : _redReef;
+        }
+        
+        private float DistanceToReef(Vector3 reefPos)
+        {
+            return Mathf.Sqrt(Mathf.Pow(transform.position.x - reefPos.x, 2) + Mathf.Pow(transform.position.z - reefPos.z, 2));
+        }
 
         private bool CoralAtState(GamePieceState state)
         {
